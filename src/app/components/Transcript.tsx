@@ -532,7 +532,7 @@ export interface TranscriptProps {
   onSendMessage: () => void;
   canSend: boolean;
   downloadRecording: () => void;
-  // Add new props for microphone functionality
+  // Props for microphone functionality
   handleTalkButtonDown: () => void;
   handleTalkButtonUp: () => void;
   isPTTUserSpeaking: boolean;
@@ -545,7 +545,6 @@ function Transcript({
   onSendMessage,
   canSend,
   downloadRecording,
-  // Add new props
   handleTalkButtonDown,
   handleTalkButtonUp,
   isPTTUserSpeaking,
@@ -621,7 +620,7 @@ function Transcript({
           </div>
         </div>
 
-        {}
+        {/* Transcript Content */}
         <div
           ref={transcriptRef}
           className="overflow-auto p-4 flex flex-col gap-y-4 h-full"
@@ -750,41 +749,39 @@ function Transcript({
           className="flex-1 px-4 py-2 focus:outline-none"
           placeholder="Type a message..."
         />
-        {}
-        {isPTTActive && (
-          <button
-            onMouseDown={handleTalkButtonDown}
-            onMouseUp={handleTalkButtonUp}
-            onTouchStart={handleTalkButtonDown}
-            onTouchEnd={handleTalkButtonUp}
-            disabled={!canSend}
-            className={`${
-              isPTTUserSpeaking 
-                ? "bg-red-500 text-white" 
-                : "bg-gray-200 text-gray-700"
-            } rounded-full p-2 disabled:opacity-50 transition-colors flex items-center justify-center`}
-            style={{ width: '36px', height: '36px' }}
+        
+        {/* Microphone button - always shown regardless of isPTTActive */}
+        <button
+          onMouseDown={handleTalkButtonDown}
+          onMouseUp={handleTalkButtonUp}
+          onTouchStart={handleTalkButtonDown}
+          onTouchEnd={handleTalkButtonUp}
+          disabled={!canSend}
+          className={`${
+            isPTTUserSpeaking 
+              ? "bg-red-500 text-white" 
+              : "bg-gray-200 text-gray-700"
+          } rounded-full p-2 disabled:opacity-50 transition-colors`}
+        >
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className={isPTTUserSpeaking ? "text-white" : "text-gray-700"}
           >
-            {}
-            <svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className={isPTTUserSpeaking ? "text-white" : "text-gray-700"}
-            >
-              <path 
-                d="M12 16c2.206 0 4-1.794 4-4V6c0-2.217-1.785-4.021-3.979-4.021a.996.996 0 0 0-.577.039C9.968 2.468 8.761 4.046 8 6v6c0 2.206 1.794 4 4 4z" 
-                fill="currentColor" 
-              />
-              <path 
-                d="M11 19.931V22h2v-2.069c3.939-.495 7-3.858 7-7.931h-2c0 3.309-2.691 6-6 6s-6-2.691-6-6H4c0 4.072 3.061 7.436 7 7.931z" 
-                fill="currentColor" 
-              />
-            </svg>
-          </button>
-        )}
+            <path 
+              d="M12 14C13.66 14 15 12.66 15 11V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 12.66 10.34 14 12 14Z" 
+              fill="currentColor" 
+            />
+            <path 
+              d="M17 11C17 14.53 14.39 17.44 11 17.93V21H13V23H11H9V21H11V17.93C7.61 17.44 5 14.53 5 11H7C7 13.76 9.24 16 12 16C14.76 16 17 13.76 17 11H19H17Z" 
+              fill="currentColor" 
+            />
+          </svg>
+        </button>
+        
         <button
           onClick={onSendMessage}
           disabled={!canSend || !userText.trim()}
@@ -798,5 +795,4 @@ function Transcript({
 }
 
 export default Transcript;
-
 
