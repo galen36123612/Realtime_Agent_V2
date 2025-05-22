@@ -522,24 +522,21 @@ function App() {
       </div>
 
       <div className="flex flex-1 gap-2 px-2 overflow-hidden relative">
-        // In App.tsx file, update the Transcript component call:
-
-        // Inside the App function, locate where the Transcript component is rendered:
-      <Transcript
-        userText={userText}
-        setUserText={setUserText}
-        onSendMessage={handleSendTextMessage}
-        downloadRecording={downloadRecording}
-        canSend={
-        sessionStatus === "CONNECTED" &&
-        dcRef.current?.readyState === "open"
-        }
+        <Transcript
+          userText={userText}
+          setUserText={setUserText}
+          onSendMessage={handleSendTextMessage}
+          downloadRecording={downloadRecording}
+          canSend={
+          sessionStatus === "CONNECTED" &&
+          dcRef.current?.readyState === "open"
+          }
         // Add these new props
-        handleTalkButtonDown={handleTalkButtonDown}
-        handleTalkButtonUp={handleTalkButtonUp}
-        isPTTUserSpeaking={isPTTUserSpeaking}
-        isPTTActive={isPTTActive}
-      />
+          handleTalkButtonDown={handleTalkButtonDown}
+          handleTalkButtonUp={handleTalkButtonUp}
+          isPTTUserSpeaking={isPTTUserSpeaking}
+          isPTTActive={isPTTActive}
+          />
 
         <Events isExpanded={isEventsPaneExpanded} />
       </div>
