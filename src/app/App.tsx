@@ -49,8 +49,9 @@ function App() {
   const [sessionStatus, setSessionStatus] =
     useState<SessionStatus>("DISCONNECTED");
 
-  const [isEventsPaneExpanded, setIsEventsPaneExpanded] =
-    useState<boolean>(true);
+  // Changed default to false to hide logs by default
+  const [isEventsPaneExpanded, setIsEventsPaneExpanded] = 
+    useState<boolean>(false);
   const [userText, setUserText] = useState<string>("");
   const [isPTTActive, setIsPTTActive] = useState<boolean>(false);
   const [isPTTUserSpeaking, setIsPTTUserSpeaking] = useState<boolean>(false);
@@ -383,6 +384,9 @@ function App() {
     const storedLogsExpanded = localStorage.getItem("logsExpanded");
     if (storedLogsExpanded) {
       setIsEventsPaneExpanded(storedLogsExpanded === "true");
+    } else {
+      // If no stored value, default to false (logs hidden)
+      localStorage.setItem("logsExpanded", "false");
     }
     const storedAudioPlaybackEnabled = localStorage.getItem(
       "audioPlaybackEnabled"
