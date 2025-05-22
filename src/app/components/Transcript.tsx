@@ -252,9 +252,11 @@ export interface TranscriptProps {
   onSendMessage: () => void;
   canSend: boolean;
   downloadRecording: () => void;
-  isPTTUserSpeaking: boolean;
+  // Add new props for microphone functionality
   handleTalkButtonDown: () => void;
   handleTalkButtonUp: () => void;
+  isPTTUserSpeaking: boolean;
+  isPTTActive: boolean;
 }
 
 function Transcript({
@@ -263,9 +265,11 @@ function Transcript({
   onSendMessage,
   canSend,
   downloadRecording,
-  isPTTUserSpeaking,
+  // Add new props
   handleTalkButtonDown,
   handleTalkButtonUp,
+  isPTTUserSpeaking,
+  isPTTActive,
 }: TranscriptProps) {
   const { transcriptItems, toggleTranscriptItemExpand } = useTranscript();
   const transcriptRef = useRef<HTMLDivElement | null>(null);
@@ -466,40 +470,45 @@ function Transcript({
           className="flex-1 px-4 py-2 focus:outline-none"
           placeholder="Type a message..."
         />
+        {/* Microphone button */}
+        {isPTTActive && (
+          <button
+            onMouseDown={handleTalkButtonDown}
+            onMouseUp={handleTalkButtonUp}
+            onTouchStart={handleTalkButtonDown}
+            onTouchEnd={handleTalkButtonUp}
+            disabled={!canSend}
+            className={`${
+              isPTTUserSpeaking 
+                ? "bg-red-500 text-white" 
+                : "bg-gray-200 text-gray-700"
+            } rounded-full p-2 disabled:opacity-50 transition-colors`}
+          >
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className={isPTTUserSpeaking ? "text-white" : "text-gray-700"}
+            >
+              <path 
+                d="M12 14C13.66 14 15 12.66 15 11V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 12.66 10.34 14 12 14Z" 
+                fill="currentColor" 
+              />
+              <path 
+                d="M17 11C17 14.53 14.39 17.44 11 17.93V21H13V23H11H9V21H11V17.93C7.61 17.44 5 14.53 5 11H7C7 13.76 9.24 16 12 16C14.76 16 17 13.76 17 11H19H17Z" 
+                fill="currentColor" 
+              />
+            </svg>
+          </button>
+        )}
         <button
           onClick={onSendMessage}
           disabled={!canSend || !userText.trim()}
           className="bg-gray-900 text-white rounded-full px-2 py-2 disabled:opacity-50"
         >
           <Image src="arrow.svg" alt="Send" width={24} height={24} />
-        </button>
-        
-        {/* Microphone Button for Push to Talk */}
-        <button
-          onMouseDown={handleTalkButtonDown}
-          onMouseUp={handleTalkButtonUp}
-          onTouchStart={handleTalkButtonDown}
-          onTouchEnd={handleTalkButtonUp}
-          disabled={!canSend}
-          className={`${
-            isPTTUserSpeaking ? "bg-red-500" : "bg-gray-900"
-          } text-white rounded-full px-2 py-2 disabled:opacity-50 transition-colors`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" x2="12" y1="19" y2="22"></line>
-          </svg>
         </button>
       </div>
     </div>
