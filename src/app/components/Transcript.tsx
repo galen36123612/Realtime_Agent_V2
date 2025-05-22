@@ -237,7 +237,6 @@ function Transcript({
 export default Transcript;*/
 
 // 0522 Testing
-
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { TranscriptItem } from "@/app/types";
