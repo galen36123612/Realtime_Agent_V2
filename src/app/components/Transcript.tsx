@@ -238,7 +238,6 @@ export default Transcript;*/
 
 // 0522 Testing
 
-// Transcript.tsx
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { TranscriptItem } from "@/app/types";
