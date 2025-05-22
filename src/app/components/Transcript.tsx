@@ -536,7 +536,6 @@ export interface TranscriptProps {
   handleTalkButtonDown: () => void;
   handleTalkButtonUp: () => void;
   isPTTUserSpeaking: boolean;
-  isPTTActive: boolean;
 }
 
 function Transcript({
@@ -548,7 +547,6 @@ function Transcript({
   handleTalkButtonDown,
   handleTalkButtonUp,
   isPTTUserSpeaking,
-  isPTTActive,
 }: TranscriptProps) {
   const { transcriptItems, toggleTranscriptItemExpand } = useTranscript();
   const transcriptRef = useRef<HTMLDivElement | null>(null);
