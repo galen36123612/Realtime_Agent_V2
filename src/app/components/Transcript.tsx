@@ -812,7 +812,6 @@ export interface TranscriptProps {
   setUserText: (val: string) => void;
   onSendMessage: () => void;
   canSend: boolean;
-  downloadRecording: () => void;
   // Props for microphone functionality
   handleTalkButtonDown: () => void;
   handleTalkButtonUp: () => void;
@@ -825,7 +824,6 @@ function Transcript({
   setUserText,
   onSendMessage,
   canSend,
-  downloadRecording,
   handleTalkButtonDown,
   handleTalkButtonUp,
   isPTTUserSpeaking,
