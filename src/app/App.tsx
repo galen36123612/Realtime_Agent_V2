@@ -2531,9 +2531,7 @@ function App() {
   return (
     <div className="text-base flex flex-col bg-gray-100 text-gray-800 relative" 
          style={{ 
-           height: '100vh', 
-           maxHeight: '100vh',
-           height: '100dvh', // 使用動態視窗高度
+           height: '100dvh', // 使用動態視窗高度，在移動端更準確
            maxHeight: '100dvh'
          }}>
       {/* Header - 固定高度 */}
