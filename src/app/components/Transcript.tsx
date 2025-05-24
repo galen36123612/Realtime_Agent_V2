@@ -824,7 +824,7 @@ function Transcript({
   setUserText,
   onSendMessage,
   canSend,
-  downloadRecording: _downloadRecording,
+  downloadRecording, // eslint-disable-line @typescript-eslint/no-unused-vars
   handleTalkButtonDown,
   handleTalkButtonUp,
   isPTTUserSpeaking,
