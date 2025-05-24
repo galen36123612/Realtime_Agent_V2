@@ -1709,7 +1709,6 @@ import Image from "next/image";
 // UI components
 import Transcript from "./components/Transcript";
 import Events from "./components/Events";
-import BottomToolbar from "./components/BottomToolbar";
 
 // Types
 import { AgentConfig, SessionStatus } from "@/app/types";
@@ -2047,36 +2046,6 @@ function App() {
     sendClientEvent({ type: "response.create" }, "trigger response PTT");
   };
 
-  const onToggleConnection = () => {
-    if (sessionStatus === "CONNECTED" || sessionStatus === "CONNECTING") {
-      disconnectFromRealtime();
-      setSessionStatus("DISCONNECTED");
-    } else {
-      connectToRealtime();
-    }
-  };
-
-  const handleAgentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newAgentConfig = e.target.value;
-    const url = new URL(window.location.toString());
-    url.searchParams.set("agentConfig", newAgentConfig);
-    window.location.replace(url.toString());
-  };
-
-  const handleSelectedAgentChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const newAgentName = e.target.value;
-    setSelectedAgentName(newAgentName);
-  };
-
-  // Instead of using setCodec, we update the URL and refresh the page when codec changes
-  const handleCodecChange = (newCodec: string) => {
-    const url = new URL(window.location.toString());
-    url.searchParams.set("codec", newCodec);
-    window.location.replace(url.toString());
-  };
-
   useEffect(() => {
     // Always set PTT to true and ignore localStorage for PTT setting
     setIsPTTActive(true);
@@ -2136,8 +2105,6 @@ function App() {
       stopRecording();
     };
   }, [sessionStatus]);
-
-  const agentSetKey = searchParams.get("agentConfig") || "default";
 
   return (
     <div className="text-base flex flex-col h-screen bg-gray-100 text-gray-800 relative">
