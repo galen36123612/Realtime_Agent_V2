@@ -2099,10 +2099,10 @@ function App() {
         >
           <div>
             <Image
-              src="/openai-logomark.svg"
-              alt="OpenAI Logo"
-              width={20}
-              height={20}
+              src="/Weider_logo_1.png"
+              alt="Weider Logo"
+              width={40}
+              height={40}
               className="mr-2"
             />
           </div>
