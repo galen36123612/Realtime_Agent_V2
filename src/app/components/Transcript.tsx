@@ -1071,7 +1071,7 @@ export interface TranscriptProps {
 }
 
 // 複製按鈕組件
-const CopyButton: React.FC<{ text: string; messageId: string }> = ({ text, messageId }) => {
+const CopyButton: React.FC<{ text: string }> = ({ text }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -1220,7 +1220,7 @@ function Transcript({
                     {/* 複製按鈕 - 只在 assistant 訊息上顯示 */}
                     {!isUser && (
                       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <CopyButton text={displayTitle} messageId={itemId} />
+                        <CopyButton text={displayTitle} />
                       </div>
                     )}
                     
