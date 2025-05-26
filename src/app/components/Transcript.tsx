@@ -1641,7 +1641,7 @@ function Transcript({
   );
 }
 
-export default Transcript;
+export default Transcript;*/
 
 // 0526 Testing apple-style micorphone icon
 
