@@ -2396,7 +2396,7 @@ function App() {
     sendClientEvent(sessionUpdateEvent);
 
     if (shouldTriggerResponse) {
-      sendSimulatedUserMessage("hi");
+      sendSimulatedUserMessage("您好，很高興為您服務！");
     }
   };
 
