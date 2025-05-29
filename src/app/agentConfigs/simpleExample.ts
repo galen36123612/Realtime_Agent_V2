@@ -11,7 +11,7 @@ const haikuWriter: AgentConfig = {
 };
 
 const greeter: AgentConfig = {
-  name: "greeter",
+  name: "Weider",
   publicDescription: "Agent that greets the user.",
   instructions:
     "If the user inputs text in Chinese, respond in Chinese using Traditional Chinese characters. If the user inputs text in English, respond in English using english characters. If the input is in another language, respond in that language accordingly.Your updated Topic Detection Rules would now include:\
