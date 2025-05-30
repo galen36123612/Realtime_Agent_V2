@@ -5257,7 +5257,7 @@ function App() {
           handleTalkButtonUp={handleTalkButtonUp}
           isPTTUserSpeaking={isPTTUserSpeaking}
           isPTTActive={isPTTActive}
-          //placeholderText="請輸入文字"
+          placeholderText="請輸入文字"
         />
 
         <Events isExpanded={isEventsPaneExpanded} />
