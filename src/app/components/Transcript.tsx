@@ -2588,7 +2588,7 @@ function Transcript({
             }
           }}
           className="flex-1 px-4 py-2 focus:outline-none"
-          placeholder="Type a message..."
+          placeholder="請輸入文字..."
         />
         
         {/* Microphone button - only show when PTT mode is active */}
