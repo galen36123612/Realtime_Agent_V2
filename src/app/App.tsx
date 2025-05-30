@@ -5272,7 +5272,10 @@ export default App;*/
 
 // Stop current session, clean up peer connection and data channel"use client";
 
-import React, { useEffect, useRef, useState } from "react";
+// Stop current session, clean up peer connection and data channel
+"use client";
+
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 
@@ -5295,7 +5298,8 @@ import { allAgentSets, defaultAgentSetKey } from "@/app/agentConfigs";
 
 import useAudioDownload from "./hooks/useAudioDownload";
 
-function App() {
+// Separate the main app logic into a component that uses search params
+function AppContent() {
   const searchParams = useSearchParams();
 
   const { transcriptItems, addTranscriptMessage, addTranscriptBreadcrumb } =
@@ -5882,8 +5886,6 @@ function App() {
         </div>
       </div>
 
-
-
       {/* Main content area */}
       <div className="flex flex-1 gap-2 px-2 overflow-hidden relative min-h-0">
         <Transcript
@@ -5904,6 +5906,19 @@ function App() {
         <Events isExpanded={isEventsPaneExpanded} />
       </div>
     </div>
+  );
+}
+
+// Main App component with Suspense wrapper
+function App() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-lg">載入中...</div>
+      </div>
+    }>
+      <AppContent />
+    </Suspense>
   );
 }
 
