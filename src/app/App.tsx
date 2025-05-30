@@ -6501,7 +6501,7 @@ function AppContent() {
             />
           </div>
           <div>
-            AI營養師
+            AI 智選藥妝
           </div>
         </div>
         
