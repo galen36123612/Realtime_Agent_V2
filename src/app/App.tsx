@@ -5270,8 +5270,6 @@ export default App;*/
 
 //0530 Testing V4 customize pop up window 
 
-// Stop current session, clean up peer connection and data channel"use client";
-
 // Stop current session, clean up peer connection and data channel
 "use client";
 
@@ -5412,9 +5410,9 @@ function AppContent() {
       // 獲得權限後關閉流，實際使用時會重新獲取
       stream.getTracks().forEach(track => track.stop());
       return stream;
-    } catch (error) {
-      console.error("麥克風權限被拒絕:", error);
-      throw error;
+    } catch (err) {
+      console.error("麥克風權限被拒絕:", err);
+      throw err;
     }
   };
 
@@ -5429,8 +5427,9 @@ function AppContent() {
         setShowMicPermissionModal(true);
         return;
       }
-    } catch (error) {
+    } catch (err) {
       // 如果不支持 permissions API，直接顯示彈窗
+      console.log("Permissions API not supported:", err);
       setShowMicPermissionModal(true);
       return;
     }
@@ -5472,7 +5471,7 @@ function AppContent() {
       };
 
       // Add local audio track for microphone input in the browser
-      const ms = await requestMicrophonePermission();
+      await requestMicrophonePermission();
       const newMs = await navigator.mediaDevices.getUserMedia({ audio: true });
       pc.addTrack(newMs.getTracks()[0]);
 
