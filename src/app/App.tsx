@@ -7108,59 +7108,49 @@ function AppContent() {
          }}>
       
       {/* 麥克風權限請求彈窗 */}
-      {showMicPermissionModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-4 shadow-2xl">
-            <div className="text-center">
-              {/* 圖標 */}
-              <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <svg 
-                  width="32" 
-                  height="32" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="#3B82F6" 
-                  strokeWidth="2"
-                >
-                  <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                  <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                </svg>
-              </div>
-              
-              {/* 標題 */}
-              <h2 className="text-xl font-bold text-gray-900 mb-2">
-                麥克風權限請求
-              </h2>
-              
-              {/* 說明文字 */}
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong>AI 智選藥妝</strong> 需要使用您的麥克風來提供語音對話功能。
-                <br /><br />
-                這將讓您能夠：
-                <br />• 透過語音與 AI 營養師對話
-                <br />• 獲得即時的營養建議和產品推薦
-                <br />• 享受更自然的互動體驗
-              </p>
-              
-              {/* 按鈕 */}
-              <div className="flex gap-3 justify-center">
-                <button
-                  onClick={handleMicPermissionDecline}
-                  className="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  稍後再說
-                </button>
-                <button
-                  onClick={handleMicPermissionAccept}
-                  className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
-                >
-                  允許使用
-                </button>
-              </div>
-            </div>
-          </div>
+{showMicPermissionModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-6 max-w-md mx-4 shadow-2xl">
+      <div className="text-center">
+        {/* 圖標 */}
+        <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+          <svg 
+            width="32" 
+            height="32" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="#3B82F6" 
+            strokeWidth="2"
+          >
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
         </div>
-      )}
+        
+        {/* 標題 */}
+        <h2 className="text-xl font-bold text-gray-900 mb-6">
+          麥克風權限請求
+        </h2>
+        
+        {/* 按鈕 */}
+        <div className="flex gap-3 justify-center">
+          <button
+            onClick={handleMicPermissionDecline}
+            className="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+          >
+            稍後再說
+          </button>
+          <button
+            onClick={handleMicPermissionAccept}
+            className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
+          >
+            允許使用
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
       {/* Header */}
       <div className="p-3 sm:p-5 text-lg font-semibold flex justify-between items-center flex-shrink-0 border-b border-gray-200">
         <div
