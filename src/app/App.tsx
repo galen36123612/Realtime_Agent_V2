@@ -7138,13 +7138,13 @@ function AppContent() {
             onClick={handleMicPermissionDecline}
             className="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
           >
-            稍後再說
+            不允許
           </button>
           <button
             onClick={handleMicPermissionAccept}
             className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
           >
-            允許使用
+            允許
           </button>
         </div>
       </div>
