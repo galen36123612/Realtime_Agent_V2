@@ -7283,8 +7283,7 @@ function AppContent() {
     router.replace(`?${params.toString()}`);
   }
 
-  const { transcriptItems, addTranscriptMessage, addTranscriptBreadcrumb } =
-    useTranscript();
+  const { transcriptItems, addTranscriptMessage } = useTranscript();
   const { logClientEvent, logServerEvent } = useEvent();
 
   const [selectedAgentName, setSelectedAgentName] = useState<string>("");
@@ -7367,11 +7366,7 @@ function AppContent() {
       selectedAgentConfigSet &&
       selectedAgentName
     ) {
-      const currentAgent = selectedAgentConfigSet.find(
-        (a) => a.name === selectedAgentName
-      );
       // 移除顯示 Agent breadcrumb，直接更新 session
-      // addTranscriptBreadcrumb(`Agent: ${selectedAgentName}`, currentAgent);
       updateSession(false); // 改為 false，不自動觸發歡迎訊息
     }
   }, [selectedAgentConfigSet, selectedAgentName, sessionStatus]);
@@ -7512,29 +7507,7 @@ function AppContent() {
     setIsListening(false);
   }
 
-  const sendSimulatedUserMessage = (text: string) => {
-    const id = uuidv4().slice(0, 32);
-    addTranscriptMessage(id, "user", text, true);
-
-    sendClientEvent(
-      {
-        type: "conversation.item.create",
-        item: {
-          id,
-          type: "message",
-          role: "user",
-          content: [{ type: "input_text", text }],
-        },
-      },
-      "(simulated user text message)"
-    );
-    sendClientEvent(
-      { type: "response.create" },
-      "(trigger response after simulated user text message)"
-    );
-  };
-
-  const updateSession = (shouldTriggerResponse: boolean = false) => {
+  const updateSession = () => {
     sendClientEvent(
       { type: "input_audio_buffer.clear" },
       "clear audio buffer on session update"
@@ -7570,11 +7543,6 @@ function AppContent() {
     };
 
     sendClientEvent(sessionUpdateEvent);
-
-    // 移除自動歡迎訊息
-    // if (shouldTriggerResponse) {
-    //   sendSimulatedUserMessage("您好，很高興為您服務！");
-    // }
   };
 
   const cancelAssistantSpeech = async () => {
