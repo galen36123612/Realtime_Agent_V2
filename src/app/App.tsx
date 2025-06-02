@@ -7801,7 +7801,7 @@ function App() {
 
 export default App;*/
 
-// 0602 Testing remove session.id, start at:
+// 0602 Testing remove session.id, start at: --> in hooks/useHandleServerEvent.ts
 
 "use client";
 
