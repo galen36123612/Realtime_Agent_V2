@@ -533,7 +533,7 @@ export function useHandleServerEvent({
     }
   };
 
-  const handleServerEvent = useRef(handleServerEvent);
+  const handleServerEventRef = useRef(handleServerEvent);
   handleServerEventRef.current = handleServerEvent;
 
   return handleServerEventRef;
