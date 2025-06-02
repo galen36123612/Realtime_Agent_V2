@@ -7370,8 +7370,9 @@ function AppContent() {
       const currentAgent = selectedAgentConfigSet.find(
         (a) => a.name === selectedAgentName
       );
-      addTranscriptBreadcrumb(`Agent: ${selectedAgentName}`, currentAgent);
-      updateSession(true);
+      // 移除顯示 Agent breadcrumb，直接更新 session
+      // addTranscriptBreadcrumb(`Agent: ${selectedAgentName}`, currentAgent);
+      updateSession(false); // 改為 false，不自動觸發歡迎訊息
     }
   }, [selectedAgentConfigSet, selectedAgentName, sessionStatus]);
 
@@ -7570,9 +7571,10 @@ function AppContent() {
 
     sendClientEvent(sessionUpdateEvent);
 
-    if (shouldTriggerResponse) {
-      sendSimulatedUserMessage("您好，很高興為您服務！");
-    }
+    // 移除自動歡迎訊息
+    // if (shouldTriggerResponse) {
+    //   sendSimulatedUserMessage("您好，很高興為您服務！");
+    // }
   };
 
   const cancelAssistantSpeech = async () => {
@@ -7645,10 +7647,12 @@ function AppContent() {
 
   // 處理麥克風按鈕點擊 - 新增打斷功能
   const handleMicrophoneClick = () => {
-    // 如果 ChatGPT 正在講話，打斷它
+    // 如果 ChatGPT 正在講話，打斷它並開始收聽
     if (isOutputAudioBufferActive) {
       console.log("打斷 ChatGPT 講話");
       cancelAssistantSpeech();
+      // 打斷後如果是 VAD 模式，會自動開始收聽
+      // 如果是 PTT 模式，用戶需要按住說話按鈕
       return;
     }
     
@@ -7755,15 +7759,13 @@ function AppContent() {
         </div>
         
         <div className="flex items-center gap-3">
-          {/* 麥克風按鈕 - 修改點擊處理 */}
+          {/* 麥克風按鈕 - 保持原來的樣式和圖標 */}
           <button
             onClick={handleMicrophoneClick}
             className={`w-12 h-12 rounded-full flex items-center justify-center font-medium transition-all duration-200 relative ${
-              isOutputAudioBufferActive 
-                ? 'bg-red-500 text-white hover:bg-red-600 shadow-md animate-pulse' // ChatGPT 講話時顯示紅色
-                : isPTTActive 
-                  ? 'bg-blue-500 text-white hover:bg-blue-600 shadow-md animate-pulse' 
-                  : 'bg-green-500 text-white hover:bg-green-600 shadow-md animate-pulse'
+              isPTTActive 
+                ? 'bg-blue-500 text-white hover:bg-blue-600 shadow-md animate-pulse' 
+                : 'bg-green-500 text-white hover:bg-green-600 shadow-md animate-pulse'
             }`}
             title={
               isOutputAudioBufferActive 
@@ -7773,23 +7775,15 @@ function AppContent() {
                   : "持續對話模式"
             }
           >
-            {/* 麥克風圖標 */}
+            {/* 始終顯示麥克風圖標 */}
             <svg 
               width="20" 
               height="20" 
               viewBox="0 0 24 24" 
               fill="currentColor"
             >
-              {isOutputAudioBufferActive ? (
-                // ChatGPT 講話時顯示停止圖標
-                <path d="M6 6h12v12H6z"/>
-              ) : (
-                // 正常麥克風圖標
-                <>
-                  <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                  <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                </>
-              )}
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
             </svg>
             {/* 收聽指示燈 - 綠色閃爍 */}
             {!isPTTActive && isListening && !isOutputAudioBufferActive && (
