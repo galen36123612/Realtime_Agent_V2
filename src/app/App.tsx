@@ -7247,7 +7247,6 @@ export default App;*/
 
 import React, { useEffect, useRef, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { v4 as uuidv4 } from "uuid";
 
 import Image from "next/image";
 
@@ -7283,7 +7282,7 @@ function AppContent() {
     router.replace(`?${params.toString()}`);
   }
 
-  const { transcriptItems, addTranscriptMessage } = useTranscript();
+  const { transcriptItems } = useTranscript();
   const { logClientEvent, logServerEvent } = useEvent();
 
   const [selectedAgentName, setSelectedAgentName] = useState<string>("");
