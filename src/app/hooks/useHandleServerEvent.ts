@@ -421,7 +421,7 @@ export function useHandleServerEvent({
           setSessionStatus("CONNECTED");
           // 移除 session.id 和時間資訊的顯示
           // 改為添加歡迎訊息
-          addTranscriptMessage("welcome", "assistant", "你好，請問最近有什麼睡眠問題呢？");
+          addTranscriptMessage("welcome", "assistant", "你好，最近腸胃有不舒服的地方嗎？");
         }
         break;
       }
