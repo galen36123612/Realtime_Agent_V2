@@ -7366,7 +7366,7 @@ function AppContent() {
       selectedAgentName
     ) {
       // 移除顯示 Agent breadcrumb，直接更新 session
-      updateSession(false); // 改為 false，不自動觸發歡迎訊息
+      updateSession(); // 更新 session
     }
   }, [selectedAgentConfigSet, selectedAgentName, sessionStatus]);
 
