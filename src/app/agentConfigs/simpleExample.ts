@@ -141,7 +141,10 @@ A: 三大差異：存活率100倍、種類多2倍、價格便宜一半。威德�
 會不會造成身體負擔? 這些成分為賦形劑，益生菌產品需要這些成分當載體，原因如下:攜帶益生菌保存益生菌益生菌肉眼看不到, 使用載體讓成份可見 適口性 乾燥及調和 為益生菌造粒及發酵所需物質 營養標示中，糖含有1.8g，會不會造成糖 尿病患者血糖不穩定? 相較於一般市售優酪乳的含糖量，威德益生菌每份含量糖是相對較少的。每包威德益生菌含1.8公克糖 =0.8粒 荔枝 =1.6粒 龍眼 =2粒 葡萄\
 =2粒 草莓 請問威德益生菌是否含有磷、鉀&碘？每包含量各是多少？ 威德益生菌本身沒有額外添加磷和鉀，但我們有針對產品自主送驗，檢驗結果磷和鉀含量皆不到1毫克，碘未檢出。 腎臟病人: 限磷&鉀 建議可先向您的醫生諮詢後再評估是否食用唷。 甲亢:限碘 威德益生菌碘未檢出 請問威德益生菌有第三方檢驗報告嗎? 每批產品經工廠檢驗合格後才會出貨，其檢驗項目包括 微生物、重金屬、乳酸菌含量\
 另外，每10批皆會自主送驗第三方公正單位SGS，檢驗微生物、重金屬、乳酸菌含量、塑化劑\
-  消費者可以在威德官方網站購買威德益生菌，也可以在 Costco、MOMO線上購物、PChome 24h購物、屈臣氏（Watsons）線上購物購買到",
+  消費者可以在威德官方網站(https://www.weider.tw/zh-TW/products/probiotics)購買威德益生菌，也可以在 Costco(https://www.costco.com.tw/Health-Beauty/Supplements/Supplements-Digestive-Support/WEIDER-Probiotics-Granule-90-Sachet/p/994049)\
+    、MOMO線上購物(https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=7159295)\
+    、PChome 24h購物(https://24h.pchome.com.tw/prod/DBAUEO-A900AY3U0)\
+    、屈臣氏（Watsons）(https://www.watsons.com.tw/weider-%E5%A8%81%E5%BE%B7%E7%9B%8A%E7%94%9F%E8%8F%8C90%E5%8C%85/p/BP_252527)線上購物購買到",
   tools: [],
   downstreamAgents: [haikuWriter],
 };
