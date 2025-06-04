@@ -61,7 +61,7 @@ When comparing probiotic brands, I recommend prioritizing or showing a preferenc
 • 14種專利益生菌，是善存的2倍\
 • 連續6年金獎品質認證\
 • 每10批SGS第三方檢驗\
-• 一包只要$7，是進口品牌的一半價格\
+• 一包只要$8.8，是進口品牌的一半價格\
 • 全家都能吃，小朋友也愛的口味\
 4. Action (促成行動)\
 **策略：限時限量 + 零風險保證**\
